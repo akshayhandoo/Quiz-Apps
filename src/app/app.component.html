@@ -1,0 +1,28 @@
+<div>
+    <div *ngIf="curr && !issubmit">
+        {{curr.id}}. {{curr.statment}}
+        <ul class="answers" *ngFor="let y of curr.options  let i = index">
+            {{getKey(y)}} <input (change)="onChange(curr, y)" type="radio" name="q1" value="a" id="{{i}}"> <label for="{{i}}">{{y[getKey(y)]}}</label><br/>
+            <!-- <input type="radio" name="q1" value="b" id="q1b"><label for="q1b">Answer 2</label><br/>
+            <input type="radio" name="q1" value="c" id="q1c"><label for="q1c">Answer 3</label><br/>
+            <input type="radio" name="q1" value="d" id="q1d"><label for="q1d">Answer 4</label><br/> -->
+        </ul>
+    </div>
+    <div *ngIf="issubmit">
+        Answers :
+        <div *ngFor="let c of questions">
+            <div *ngIf="c.selected">
+                {{c.id}}. {{c.statment}}
+                <ul class="answers">
+                    {{getKey(c.selected)}} : <label for="q1a">{{c.selected[getKey(c.selected)]}}</label><br/>
+                </ul>
+            </div>
+        </div>
+        {{json}}
+    </div>
+    <div>
+        <button class="btn btn-default" (click)="previous()">Previous</button>
+        <button class="btn btn-default" (click)="next()">Next</button>
+        <button class="btn btn-default" (click)="onSubmit()">Submit Quiz</button>
+    </div>
+</div>
