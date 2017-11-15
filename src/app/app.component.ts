@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 // import { Http } from '@angular/http';
 import { Request } from './request/promise.request';
-import { setInterval } from 'timers';
+// import { setInterval } from 'timers';
 
 @Component({
   selector: 'app-root',
@@ -60,7 +60,7 @@ export class AppComponent {
   }
 
   ngOnInit(): void{
-      this.request.get('assets/data/question.json').then(response=>{
+      this.request.get('https://api.myjson.com/bins/blxqf').then(response=>{
         console.log("got response",response);
         this.questions = response.questions;
         this.index = 0;
